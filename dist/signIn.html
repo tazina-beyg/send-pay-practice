@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="output.css" />
+    <link rel="stylesheet" href="../src/SignIn.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link rel="stylesheet" href="output.css" />
+        <link rel="stylesheet" href="../src/SignIn.css" />
+        <script src="https://cdn.tailwindcss.com"></script>
+      </head>
+      <body>
+        <form class="p-40" id="signInForm">
+          <div>
+            <a
+              href="../dist/index.html"
+              aria-label="Sendpay"
+              title="Sendpay"
+              class="inline-flex items-center mr-20"
+            >
+              <img src="../img/emojione_e-mail.svg" alt="" />
+
+              <span class="ml-4"><img src="../img/Sendpay.png" alt="" /></span>
+            </a>
+          </div>
+          <div class="mb-6">
+            <label for="email" class="block mx-2 text-lg font-medium text-white"
+              >Your email</label
+            >
+            <input
+              type="email"
+              id="email"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base outline-none rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="name@flowbite.com"
+              required
+            />
+          </div>
+          <div class="mb-6">
+            <label
+              for="password"
+              class="block mb-2 text-base outline-none dark:text-white"
+              >Your password</label
+            >
+            <input
+              type="password"
+              id="password"
+              class="bg-gray-50 border border-gray-300 text-gray-900 text-base outline-none rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+              placeholder="Password"
+              required
+            />
+          </div>
+          <div class="flex items-start mb-6">
+            <div class="flex items-center h-5">
+              <input
+                id="remember"
+                type="checkbox"
+                value=""
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-base outline-none rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                placeholder="Password"
+                required
+              />
+            </div>
+            <label
+              for="remember"
+              class="ml-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+              >Remember me</label
+            >
+          </div>
+          <button
+            type="submit"
+            class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            href="/dist/index.html"
+          >
+            Sign In
+          </button>
+        </form>
+
+        <script>
+          document
+            .getElementById("signInForm")
+            .addEventListener("submit", function (e) {
+              e.preventDefault();
+
+              var userEmail = document.getElementById("email").value;
+              var userPassword = document.getElementById("password").value;
+
+              // Retrieve stored data from local storage
+              var storedData = localStorage.getItem("userData");
+              var userData = [];
+
+              if (storedData) {
+                // If data exists, parse it and assign it to the userData array
+                userData = JSON.parse(storedData);
+
+                // Check if the email and password match the stored data
+                var matchedUser = userData.find(function (user) {
+                  return (
+                    user.email === userEmail && user.password === userPassword
+                  );
+                });
+
+                if (matchedUser) {
+                  window.location.href = "/dist/index.html";
+                  alert("Login Successfull");
+                } else {
+                  alert("Invalid email or password");
+                }
+              } else {
+                alert("No user data found");
+              }
+            });
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
